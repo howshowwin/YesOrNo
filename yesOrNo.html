@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幫你問市長</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: #111111;
+            position: relative;
+        }
+
+        input {
+
+            padding: 0.5em 1em;
+            border-radius: 2px;
+            border: none;
+            border-bottom: 1px solid #aaa;
+            display: inline-block;
+            font-size: 1.2em;
+            outline: none;
+            font-weight: 300;
+            text-align: center;
+            background: transparent;
+            color: white;
+            text-shadow: inherit;
+        }
+
+        input:focus {
+            border-bottom-color: white;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #444;
+        }
+
+        ::-moz-placeholder {
+            color: #444;
+        }
+
+        :-ms-input-placeholder {
+            color: #444;
+        }
+
+        ::-ms-input-placeholder {
+            color: #444;
+        }
+
+        ::placeholder {
+            color: #444;
+            font-weight: 800;
+        }
+
+        h1 {
+            color: #eee;
+            margin-bottom: 20px;
+            font-size: 26px;
+
+        }
+
+        .box {
+            width: 400px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            text-align: center;
+            margin: auto;
+            padding-top: 350px;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+        .btn2{
+            border:  1px solid #ccc;
+            color: #888;
+
+            line-height:30px;
+            display: inline;
+            margin: 40px; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>
+            偉大韓市長，什麼都知道
+        </h1>
+        <input type="text" name="" id="inputArea" placeholder="問問韓市長！">
+
+        <p>想吃什麼?想要封城?想選總統?總之先來問問韓市長</p>
+        <div class="btn2">GO</div>
+
+    </div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        var hyes 
+        var yes =["yes1.jpg","yes2.jpg","yes3.jpg","yes4.jpg","yes5.jpg"]
+        var no = ["no1.jpg","no2.jpg","no3.jpg","no4.jpg","no5.jpg"]
+        $('.btn2').click(function(){
+            if($('input').val()!=''){
+                $('input').val('')
+                 test()
+           
+            }
+        })
+
+        function test(){
+            fetch("https://yesno.wtf/api")
+            .then(res => res.json())
+            .then(res => {
+                hyes=res
+                console.log(res)
+                if(res.answer=='yes'){
+                    $('h1').text('YES  I  DO!')
+                    let ramdo = 
+                    $('body').css({
+                    
+                    })
+                }else{
+                    $('h1').text('NO  NO  NO!')
+                    $('body').css({
+                        
+                    })
+                }
+            });
+        }
+   
+    </script>
+</body>
+
+</html>
